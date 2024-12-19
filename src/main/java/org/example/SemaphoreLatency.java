@@ -1,13 +1,9 @@
 package org.example;
 
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Semaphore;
 
 class SemaphoreLatency {
@@ -40,7 +36,7 @@ class SemaphoreLatency {
         Utils.calculateValues(released,acquired,values);
         System.out.println("Overall DataPoints calculated are: "+ values.size()+"/"+ ((numberOfRuns*2)-2));
         if(writeToCSV)
-        Utils.writeToCSV(values, "semaphoreLatency.csv");
+        Utils.writeToCSV(values, "semaphoreLatency.csv", 20);
 
 
 

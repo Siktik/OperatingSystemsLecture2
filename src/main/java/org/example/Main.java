@@ -3,7 +3,7 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
 
-        int numberOfRuns=1000;
+        int numberOfRuns=50000;
         boolean writeToCSV = false;
 
         //SpinLock lock= new SpinLock();

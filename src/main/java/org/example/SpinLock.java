@@ -1,8 +1,5 @@
 package org.example;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -49,26 +46,26 @@ public class SpinLock {
         Utils.calculateValues(released,acquired,values);
         System.out.println("Overall DataPoints calculated are: "+ values.size()+"/"+ ((numberOfRuns*2)-2));
         if(writeToCSV)
-            Utils.writeToCSV(values, "spinLockLatency.csv");
+            Utils.writeToCSV(values, "spinLockLatency.csv", 20);
 
     }
 
 
     public void lock() {
+
         while (!lock.compareAndSet(false, true)) {
             // Spin-wait until the lock is acquired
         }
         long end= System.nanoTime();
-
         acquired.add(new DataPoint(Thread.currentThread().getName(), end));
 
     }
     public void unlock() {
 
-
         long start= System.nanoTime();
         released.add(new DataPoint(Thread.currentThread().getName(), start));
         lock.set(false);
+
     }
 
     int numberOfRuns; // in a perfect world this would lead to 2*numberOfRuns datapoints

@@ -32,16 +32,18 @@ public class Utils {
     }
 
 
-    public static void writeToCSV(List<Long> values, String fileName){
+    public static void writeToCSV(List<Long> values, String fileName, int discard){
+        if(discard >= values.size())
+            throw new IllegalArgumentException("the number of values to discard is higher than the values itself");
         try {
             File file = new File(fileName);
             FileWriter writer = new FileWriter(file);
 
-            for(int y=20; y< values.size(); y++){
+            for(int y=discard; y< values.size(); y++){
                 writer.write(values.get(y)+";");
             }
             writer.close();
-        }catch(IOException e){
+        }catch(IOException ignored){
 
         }
     }
