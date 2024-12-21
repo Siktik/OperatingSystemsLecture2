@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  interprocessone:
+    image: interprocessone  # The first image name
+    container_name: interprocessone  # Name of the first container
+    networks:
+      - zmqnetwork
+    volumes:
+      - file-share:/app/data
+
+  interprocees:
+    image: interprocesstwo  # The second image name
+    container_name: interprocesstwo  # Name of the second container
+    networks:
+      - zmqnetwork
+    volumes:
+      - file-share:/app/data
+
+
+networks:
+  zmqnetwork:
+    driver: "bridge"
+
+volumes:
+  file-share:

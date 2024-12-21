@@ -5,7 +5,7 @@ import org.zeromq.ZMQ;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ZeroMQ {
+public class ZeroMQInProcess {
     public static void main(String[] args) throws InterruptedException {
         final ZMQ.Context context = ZMQ.context(0);
 
@@ -50,6 +50,7 @@ public class ZeroMQ {
         senderThread.join();
         receiverThread.join();
         context.close();
+
         Utils.writeToCSV(values, "InProcZeroMQ.csv", 1000);
         values.forEach((e)-> System.out.println("RTT: " + e + " ns")
 );
