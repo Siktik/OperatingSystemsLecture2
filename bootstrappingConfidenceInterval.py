@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-file_path = "InterProcessDockerizedCombined.csv"  # Replace with your actual file path
+file_path = "data/InterProcessDockerizedCombined.csv"  # Replace with your actual file path
 np.random.seed(42)
 # Read the CSV and store values in a 1D numpy array
 values = np.genfromtxt(file_path, delimiter=';', skip_header=0)
